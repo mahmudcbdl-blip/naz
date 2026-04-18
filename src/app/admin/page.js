@@ -142,69 +142,192 @@ export default function AdminPage() {
         />
       )}
 
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-6 mt-10">
+      <div className="flex flex-col md:flex-col justify-between items-center md:items-center gap-4 border-b pb-6 mt-10">
         <div>
           <h1 className="text-3xl font-black text-gray-900 uppercase tracking-tighter leading-none">Inventory Control</h1>
-          <p className="text-gray-500 font-medium mt-2">Manage your {products.length} products</p>
+          <p className="text-gray-600 text-xl font-semibold mt-2">Manage your {products.length} products</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-10">
-        <div className="xl:col-span-4 bg-white p-6 md:p-8 rounded-[40px] shadow-sm border border-gray-100 h-fit xl:sticky xl:top-24">
-          <h2 className="text-xl font-black mb-6 uppercase tracking-widest text-yellow-600">Add Product</h2>
-          <form onSubmit={handleSubmit} className="space-y-4 text-sm">
-            <input type="text" placeholder="Name (Bangla)" className="w-full p-4 bg-gray-50 rounded-2xl outline-none ring-1 ring-gray-100 focus:ring-2 focus:ring-yellow-500" value={formData.nameBn} onChange={(e)=>setFormData({...formData, nameBn:e.target.value})} required/>
-            <input type="text" placeholder="Name (English)" className="w-full p-4 bg-gray-50 rounded-2xl outline-none ring-1 ring-gray-100 focus:ring-2 focus:ring-yellow-500" value={formData.nameEn} onChange={(e)=>setFormData({...formData, nameEn:e.target.value})} required/>
-            
-            <div className="grid grid-cols-2 gap-4">
-              <input type="number" placeholder="Price (৳)" className="p-4 bg-gray-50 rounded-2xl outline-none ring-1 ring-gray-100" value={formData.price} onChange={(e)=>setFormData({...formData, price:e.target.value})} required/>
-              <input type="number" placeholder="Stock" className="p-4 bg-gray-50 rounded-2xl outline-none ring-1 ring-gray-100" value={formData.stock} onChange={(e)=>setFormData({...formData, stock:e.target.value})} required/>
-            </div>
+      <div className="grid grid-cols-1 gap-10 place-items-center min-h-screen">
 
-            <div className="grid grid-cols-2 gap-4">
-              <input type="text" placeholder="Discount (e.g. 10%)" className="p-4 bg-gray-50 rounded-2xl outline-none ring-1 ring-gray-100" value={formData.discount} onChange={(e)=>setFormData({...formData, discount:e.target.value})} required/>
-              <select className="p-4 bg-gray-50 rounded-2xl outline-none ring-1 ring-gray-100" value={formData.category} onChange={(e)=>setFormData({...formData, category:e.target.value})}>
-                <option value="gadgets">Gadgets</option>
-                <option value="electronics">Electronics</option>
-                <option value="fashion">Fashion</option>
-                <option value="home-appliances">Home Appliances</option>
-              </select>
-            </div>
 
-            <div className="space-y-3">
-              <label className="text-[10px] font-black text-gray-400 ml-2 uppercase tracking-widest">Images ({formData.images.length}/3)</label>
-              <div className="grid grid-cols-3 gap-2">
-                {previews.map((src, index) => (
-                  <div key={index} className="relative aspect-square rounded-xl overflow-hidden border border-yellow-500 group shadow-sm">
-                    <img src={src} className="w-full h-full object-cover" alt="preview" />
-                    <button type="button" onClick={() => removeImage(index)} className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-5 h-5 text-[10px] flex items-center justify-center shadow-lg">✕</button>
-                    <div className="absolute bottom-0 left-0 bg-yellow-500 text-white text-[7px] px-1 font-black uppercase w-full text-center py-0.5">Img {index + 1}</div>
-                  </div>
-                ))}
-                {previews.length < 3 && (
-                   <label className="aspect-square rounded-xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-gray-300 cursor-pointer hover:bg-gray-50 transition-all">
-                      <span className="text-xl font-light">+</span>
-                      <input type="file" className="hidden" accept="image/*" onChange={handleImageChange} />
-                   </label>
-                )}
-              </div>
-            </div>
-            
-            <textarea placeholder="Description (Bangla)" className="w-full p-4 bg-gray-50 rounded-2xl outline-none ring-1 ring-gray-100 h-32 resize-none" value={formData.descriptionBn} onChange={(e)=>setFormData({...formData, descriptionBn:e.target.value})} required></textarea>
-            
-            <div className="flex justify-between p-4 bg-gray-50 rounded-2xl">
-              <label className="flex items-center gap-2 font-black text-[10px]"><input type="checkbox" checked={formData.isFlashSale} onChange={(e)=>setFormData({...formData, isFlashSale:e.target.checked})}/> FLASH SALE</label>
-              <label className="flex items-center gap-2 font-black text-[10px]"><input type="checkbox" checked={formData.isTopRated} onChange={(e)=>setFormData({...formData, isTopRated:e.target.checked})}/> TOP RATED</label>
-            </div>
-            
-            <button disabled={uploading} className="w-full bg-yellow-500 text-white py-5 rounded-[22px] font-black text-lg shadow-xl hover:bg-black transition-all">
-              {uploading ? "UPLOADING ASSETS..." : "CONFIRM UPLOAD"}
+
+<div className="xl:col-span-4 bg-white p-6 md:p-8 rounded-[20px] w-full max-w-3xl shadow-sm border border-gray-100 h-fit xl:sticky xl:top-24">
+  <h2 className="text-xl font-black mb-6 uppercase tracking-widest text-yellow-600">
+    Add Product
+  </h2>
+
+  <form onSubmit={handleSubmit} className="space-y-4 text-sm">
+    <input
+      type="text"
+      placeholder="Name (Bangla)"
+      className="w-full p-4 bg-white text-gray-900 placeholder-gray-400 rounded-2xl outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-yellow-500"
+      value={formData.nameBn}
+      onChange={(e) =>
+        setFormData({ ...formData, nameBn: e.target.value })
+      }
+      required
+    />
+
+    <input
+      type="text"
+      placeholder="Name (English)"
+      className="w-full p-4 bg-white text-gray-900 placeholder-gray-400 rounded-2xl outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-yellow-500"
+      value={formData.nameEn}
+      onChange={(e) =>
+        setFormData({ ...formData, nameEn: e.target.value })
+      }
+      required
+    />
+
+    <div className="grid grid-cols-2 gap-4">
+      <input
+        type="number"
+        placeholder="Price (৳)"
+        className="p-4 bg-white text-gray-900 placeholder-gray-400 rounded-2xl outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-yellow-500"
+        value={formData.price}
+        onChange={(e) =>
+          setFormData({ ...formData, price: e.target.value })
+        }
+        required
+      />
+
+      <input
+        type="number"
+        placeholder="Stock"
+        className="p-4 bg-white text-gray-900 placeholder-gray-400 rounded-2xl outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-yellow-500"
+        value={formData.stock}
+        onChange={(e) =>
+          setFormData({ ...formData, stock: e.target.value })
+        }
+        required
+      />
+    </div>
+
+    <div className="grid grid-cols-2 gap-4">
+      <input
+        type="text"
+        placeholder="Discount (e.g. 10%)"
+        className="p-4 bg-white text-gray-900 placeholder-gray-400 rounded-2xl outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-yellow-500"
+        value={formData.discount}
+        onChange={(e) =>
+          setFormData({ ...formData, discount: e.target.value })
+        }
+        required
+      />
+
+      <select
+        className="p-4 bg-white text-gray-900 rounded-2xl outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-yellow-500"
+        value={formData.category}
+        onChange={(e) =>
+          setFormData({ ...formData, category: e.target.value })
+        }
+      >
+        <option value="gadgets">Gadgets</option>
+        <option value="electronics">Electronics</option>
+        <option value="fashion">Fashion</option>
+        <option value="home-appliances">Home Appliances</option>
+      </select>
+    </div>
+
+    <div className="space-y-3">
+      <label className="text-[10px] font-black text-gray-500 ml-2 uppercase tracking-widest">
+        Images ({formData.images.length}/3)
+      </label>
+
+      <div className="grid grid-cols-3 gap-2">
+        {previews.map((src, index) => (
+          <div
+            key={index}
+            className="relative aspect-square rounded-xl overflow-hidden border border-yellow-500 group shadow-sm"
+          >
+            <img
+              src={src}
+              className="w-full h-full object-cover"
+              alt="preview"
+            />
+
+            <button
+              type="button"
+              onClick={() => removeImage(index)}
+              className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-5 h-5 text-[10px] flex items-center justify-center shadow-lg"
+            >
+              ✕
             </button>
-          </form>
-        </div>
+
+            <div className="absolute bottom-0 left-0 bg-yellow-500 text-white text-[7px] px-1 font-black uppercase w-full text-center py-0.5">
+              Img {index + 1}
+            </div>
+          </div>
+        ))}
+
+        {previews.length < 3 && (
+          <label className="aspect-square rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-50 transition-all">
+            <span className="text-xl font-light">+</span>
+            <input
+              type="file"
+              className="hidden"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+          </label>
+        )}
+      </div>
+    </div>
+
+    <textarea
+      placeholder="Description (Bangla)"
+      className="w-full p-4 bg-white text-gray-900 placeholder-gray-400 rounded-2xl outline-none ring-1 ring-gray-200 h-32 resize-none focus:ring-2 focus:ring-yellow-500"
+      value={formData.descriptionBn}
+      onChange={(e) =>
+        setFormData({ ...formData, descriptionBn: e.target.value })
+      }
+      required
+    ></textarea>
+
+    <div className="flex justify-between p-4 bg-gray-50 rounded-2xl">
+      <label className="flex items-center gap-2 font-black text-[10px] text-gray-700">
+        <input
+          type="checkbox"
+          checked={formData.isFlashSale}
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              isFlashSale: e.target.checked,
+            })
+          }
+        />
+        FLASH SALE
+      </label>
+
+      <label className="flex items-center gap-2 font-black text-[10px] text-gray-700">
+        <input
+          type="checkbox"
+          checked={formData.isTopRated}
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              isTopRated: e.target.checked,
+            })
+          }
+        />
+        TOP RATED
+      </label>
+    </div>
+
+    <button
+      disabled={uploading}
+      className="w-full bg-yellow-500 text-white py-5 rounded-[22px] font-black text-lg shadow-xl hover:bg-black transition-all"
+    >
+      {uploading ? "UPLOADING ASSETS..." : "CONFIRM UPLOAD"}
+    </button>
+  </form>
+</div>
+
 
         <div className="xl:col-span-8 bg-white p-6 md:p-8 rounded-[40px] shadow-sm border border-gray-100">
-          <h2 className="text-xl font-black mb-8 italic text-gray-400 uppercase tracking-widest">Inventory Items</h2>
+          <h2 className="text-xl font-black mb-8 italic text-gray-700 uppercase tracking-widest">Inventory Items</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {products.map(p => (
               <div key={p._id} className="p-4 bg-gray-50/50 border border-gray-100 rounded-[30px] flex items-center gap-4 group hover:bg-white hover:shadow-xl transition-all">

@@ -36,7 +36,7 @@ export default function FlashSales() {
     <div className="my-16 px-2">
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
         <div>
-          <h2 className="text-5xl font-black uppercase tracking-tighter italic leading-none">
+          <h2 className="text-5xl  text-black font-black uppercase tracking-tighter italic leading-none">
             Flash <span className="text-yellow-500">Sales</span> 🔥
           </h2>
         </div>

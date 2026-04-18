@@ -30,7 +30,7 @@ export default function OffersPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 min-h-screen">
       <div className="mb-12 border-b-8 border-yellow-500 pb-6">
-        <h1 className="text-6xl font-black uppercase italic tracking-tighter">Hot <span className="text-yellow-500">Offers</span> %</h1>
+        <h1 className="text-6xl text-black font-black uppercase italic tracking-tighter">Hot <span className="text-yellow-500">Offers</span> %</h1>
         <p className="font-bold text-gray-500 uppercase tracking-widest mt-2">Exclusive discounts just for you</p>
       </div>
 

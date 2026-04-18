@@ -22,7 +22,7 @@ export default function CategoryPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 min-h-screen">
-      <h1 className="text-5xl font-black uppercase italic mb-10 border-l-8 border-yellow-500 pl-6">
+      <h1 className="text-5xl font-black text-black uppercase italic mb-10 border-l-8 border-yellow-500 pl-6">
         Our <span className="text-yellow-500">{CATEGORY_NAME}</span> Collection
       </h1>
       

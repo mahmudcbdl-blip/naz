@@ -108,7 +108,7 @@ export default function CheckoutPage() {
         <div className="lg:col-span-7 bg-white p-10 rounded-[50px] shadow-sm border border-gray-100">
           <div className="flex justify-between items-center mb-8">
              <h2 className="text-3xl font-black italic uppercase">Shipping Details</h2>
-             <span className="bg-green-100 text-green-700 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Cash on Delivery</span>
+             <span className="bg-green-100 text-green-700 px-4 py-1 rounded-full text-[14px] font-black uppercase tracking-widest">Cash on Delivery</span>
           </div>
 
           <form onSubmit={handlePlaceOrder} className="space-y-6">
@@ -176,7 +176,7 @@ export default function CheckoutPage() {
             ))}
           </div>
           <div className="flex justify-between text-5xl font-black border-t border-gray-800 pt-8 mt-4 tracking-tighter italic">
-            <span className="text-gray-500">Total</span>
+            <span className="text-yellow-500">Total</span>
             <span className="text-white">৳{total}</span>
           </div>
         </div>
@@ -190,16 +190,16 @@ export default function CheckoutPage() {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="space-y-3">
-             <h4 className="font-black text-sm uppercase text-gray-400">01. 7-Day Window</h4>
-             <p className="text-xs text-gray-600 leading-relaxed">পণ্য হাতে পাওয়ার পর সর্বোচ্চ ৭ দিনের মধ্যে রিটার্ন রিকোয়েস্ট করতে হবে। এরপর কোনো অভিযোগ গ্রহণযোগ্য হবে না।</p>
+             <h4 className="font-black text-lg uppercase text-gray-600">01. 7-Day Window</h4>
+             <p className="text-lg text-gray-700 leading-relaxed">পণ্য হাতে পাওয়ার পর সর্বোচ্চ ৭ দিনের মধ্যে রিটার্ন রিকোয়েস্ট করতে হবে। এরপর কোনো অভিযোগ গ্রহণযোগ্য হবে না।</p>
           </div>
           <div className="space-y-3">
-             <h4 className="font-black text-sm uppercase text-gray-400">02. Product Condition</h4>
-             <p className="text-xs text-gray-600 leading-relaxed">পণ্যটি অবশ্যই অব্যবহৃত এবং অক্ষত অবস্থায় থাকতে হবে। কোনো অংশ ভাঙা বা প্যাকেট নষ্ট হলে রিটার্ন নেওয়া হবে না।</p>
+             <h4 className="font-black text-lg uppercase text-gray-600">02. Product Condition</h4>
+             <p className="text-lg text-gray-700 leading-relaxed">পণ্যটি অবশ্যই অব্যবহৃত এবং অক্ষত অবস্থায় থাকতে হবে। কোনো অংশ ভাঙা বা প্যাকেট নষ্ট হলে রিটার্ন নেওয়া হবে না।</p>
           </div>
           <div className="space-y-3">
-             <h4 className="font-black text-sm uppercase text-gray-400">03. Verification</h4>
-             <p className="text-xs text-gray-600 leading-relaxed">ডেলিভারি ম্যানের সামনে পণ্য চেক করে নিন। কোনো ত্রুটি থাকলে তাৎক্ষণিক আমাদের হটলাইনে যোগাযোগ করুন।</p>
+             <h4 className="font-black text-lg uppercase text-gray-600">03. Verification</h4>
+             <p className="text-lg text-gray-700 leading-relaxed">ডেলিভারি ম্যানের সামনে পণ্য চেক করে নিন। কোনো ত্রুটি থাকলে তাৎক্ষণিক আমাদের হটলাইনে যোগাযোগ করুন।</p>
           </div>
         </div>
       </div>

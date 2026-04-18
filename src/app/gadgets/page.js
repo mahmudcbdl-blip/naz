@@ -22,18 +22,21 @@ export default function CategoryPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 min-h-screen">
-      <h1 className="text-5xl font-black uppercase italic mb-10 border-l-8 border-yellow-500 pl-6">
+      {/* Fixed: Changed text to black for high-contrast, premium look */}
+      <h1 className="text-5xl font-black uppercase italic mb-10 border-l-8 border-yellow-500 pl-6 text-black">
         Our <span className="text-yellow-500">{CATEGORY_NAME}</span> Collection
       </h1>
       
       {loading ? (
-        <p className="text-center font-bold">Loading...</p>
+        <div className="flex justify-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-yellow-500"></div>
+        </div>
       ) : products.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {products.map(p => <ProductCard key={p._id} product={p} />)}
         </div>
       ) : (
-        <p className="text-gray-400 font-bold text-center py-20">No products found in this category.</p>
+        <p className="text-gray-600 font-bold text-center py-20 text-lg">No products found in this category.</p>
       )}
     </div>
   );
